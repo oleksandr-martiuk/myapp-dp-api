@@ -3,20 +3,19 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
+input DayInput {
+  name: String!
+  shortName: String!
+}
+
 type DayType {
   id: ID!
   name: String!
   shortName: String!
 }
 
-input InputDay {
-  id: ID!
-  name: String!
-  shortName: String!
-}
-
 type Mutation {
-  createDay(input: InputDay!): [DayType!]!
+  createDay(input: DayInput!): DayType!
 }
 
 type Query {

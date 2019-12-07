@@ -1,16 +1,13 @@
-import { Query, Resolver, Args } from '@nestjs/graphql';
+import { Query, Mutation, Resolver, Args } from '@nestjs/graphql';
 import { DaysService } from './days.service';
 import { DayType } from './dto/create-day.dto';
-import { Mutation } from 'type-graphql';
-import { InputDay } from './input/day.input';
+import { DayInput } from './input/day.input';
 
 @Resolver('Days')
 export class DaysResolver {
   constructor(
     private readonly daysService: DaysService
-  ) {
-
-  }
+  ) {}
 
   @Query(() => String)
   async hello() {
@@ -22,9 +19,8 @@ export class DaysResolver {
     return this.daysService.findAll();
   }
 
-  @Mutation(() => [DayType])
-  async createDay(@Args('input') input: InputDay) {
-    console.log(input);
-    return this.daysService.create({input});
+  @Mutation(() => DayType)
+  async createDay(@Args('input') input: DayInput) {
+    return this.daysService.create(input);
   }
 }

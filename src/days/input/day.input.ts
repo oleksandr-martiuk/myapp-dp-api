@@ -1,9 +1,7 @@
-import { Field, ID, InputType } from 'type-graphql';
+import { Field, InputType } from 'type-graphql';
 
 @InputType()
-export class InputDay {
-  @Field(() => ID)
-  id: string;
+export class DayInput {
   @Field()
   readonly name: string;
   @Field()

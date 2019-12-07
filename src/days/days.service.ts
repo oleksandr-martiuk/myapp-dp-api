@@ -2,15 +2,14 @@ import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Day } from './interfaces/day.interface';
-import { InputDay } from './input/day.input';
+import { DayInput } from './input/day.input';
 
 @Injectable()
 export class DaysService {
   constructor(@InjectModel('Day') private readonly dayModel: Model<Day>) { }
 
-  async create(createDayDto: { input: InputDay }): Promise<Day> {
-    console.log('createDayDto: ', createDayDto);
-    const createdDay = new this.dayModel(InputDay);
+  async create(createDayDto: DayInput): Promise<Day> {
+    const createdDay = new this.dayModel(createDayDto);
     return createdDay.save();
   }
 
