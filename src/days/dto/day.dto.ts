@@ -3,7 +3,7 @@ import { Field, ID, ObjectType } from 'type-graphql';
 @ObjectType()
 export class DayType {
   @Field(() => ID)
-  id: string;
+  readonly id?: string;
   @Field()
   readonly name: string;
   @Field()

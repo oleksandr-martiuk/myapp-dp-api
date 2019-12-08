@@ -3,9 +3,10 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
-input DayInput {
+input CreateDayInput {
   name: String!
   shortName: String!
+  order: Int!
 }
 
 type DayType {
@@ -15,10 +16,18 @@ type DayType {
 }
 
 type Mutation {
-  createDay(input: DayInput!): DayType!
+  createDay(input: CreateDayInput!): DayType!
+  updateDay(update: UpdateDayInput!, id: String!): DayType!
+  deleteDay(id: String!): DayType!
 }
 
 type Query {
-  hello: String!
-  days: [DayType!]!
+  getAllDays: [DayType!]!
+  getOneDay(id: String!): DayType!
+}
+
+input UpdateDayInput {
+  name: String
+  shortName: String
+  order: Int
 }

@@ -6,15 +6,17 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DaysModule } from './days/days.module';
 
+const mongoOptions = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
+};
+
 @Module({
   imports: [
-    GraphQLModule.forRoot({
-      autoSchemaFile: 'schema.gql',
-    }),
-    MongooseModule.forRoot(MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    }),
+    GraphQLModule.forRoot({ autoSchemaFile: 'schema.gql' }),
+    MongooseModule.forRoot(MONGO_URI, mongoOptions),
     DaysModule,
   ],
   controllers: [AppController],

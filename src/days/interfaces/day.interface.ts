@@ -1,4 +1,7 @@
-export interface Day {
-  name: string;
-  shortName: string;
+import { Document } from 'mongoose';
+
+export interface IDay extends Document {
+  readonly name: string;
+  readonly shortName: string;
+  readonly order: number;
 }

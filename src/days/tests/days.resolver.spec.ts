@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { DaysResolver } from './days.resolver';
+import { DaysResolver } from '../days.resolver';
 
 describe('DaysResolver', () => {
   let resolver: DaysResolver;
