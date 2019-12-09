@@ -5,6 +5,7 @@ import { MONGO_URI } from '../configs/configs';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DaysModule } from './days/days.module';
+import { LanguagesModule } from './languages/languages.module';
 
 const mongoOptions = {
   useNewUrlParser: true,
@@ -18,6 +19,7 @@ const mongoOptions = {
     GraphQLModule.forRoot({ autoSchemaFile: 'schema.gql' }),
     MongooseModule.forRoot(MONGO_URI, mongoOptions),
     DaysModule,
+    LanguagesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

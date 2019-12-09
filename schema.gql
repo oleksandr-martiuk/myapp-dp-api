@@ -15,18 +15,26 @@ type DayType {
   shortName: String!
 }
 
+type LanguageType {
+  id: ID!
+  name: String!
+}
+
 type Mutation {
   createDay(input: CreateDayInput!): DayType!
-  updateDay(update: UpdateDayInput!, id: String!): DayType!
+  updateDay(input: UpdateDayInput!): DayType!
   deleteDay(id: String!): DayType!
 }
 
 type Query {
-  getAllDays: [DayType!]!
-  getOneDay(id: String!): DayType!
+  readAllDays: [DayType!]!
+  readDay(id: String!): DayType!
+  readAllLanguages: [LanguageType!]!
+  readLanguage(id: String!): LanguageType!
 }
 
 input UpdateDayInput {
+  id: String!
   name: String
   shortName: String
   order: Int

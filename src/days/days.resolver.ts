@@ -10,46 +10,28 @@ export class DaysResolver {
     private readonly daysService: DaysService
   ) {}
 
-  /**
-   * Read MULTIPLE days
-   */
-  @Query(() => [DayType])
-  async getAllDays() {
-    return this.daysService.findAll();
-  }
-
-  /**
-   * Read 1 days
-   */
-  @Query(() => DayType)
-  async getOneDay(@Args('id') id: string) {
-    return this.daysService.findOneById(id);
-  }
-
-  /**
-   * Create 1 day
-   */
   @Mutation(() => DayType)
   async createDay(@Args('input') input: CreateDayInput) {
-    return this.daysService.createOne(input);
+    return this.daysService.createDay(input);
   }
 
-  /**
-   * Update 1 day
-   */
+  @Query(() => [DayType])
+  async readAllDays() {
+    return this.daysService.readAllDays();
+  }
+
+  @Query(() => DayType)
+  async readDay(@Args('id') id: string) {
+    return this.daysService.readDay(id);
+  }
+
   @Mutation(() => DayType)
-  async updateDay(
-    @Args('id') id: string,
-    @Args('update') update: UpdateDayInput
-  ) {
-    return this.daysService.updateOne(id, update);
+  async updateDay(@Args('input') input: UpdateDayInput) {
+    return this.daysService.updateDay(input);
   }
 
-  /**
-   * Delete 1 day
-   */
   @Mutation(() => DayType)
   async deleteDay(@Args('id') id: string) {
-    return this.daysService.deleteOne(id);
+    return this.daysService.deleteDay(id);
   }
 }
