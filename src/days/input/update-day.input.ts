@@ -1,10 +1,7 @@
 import { InputType, Field, Int } from 'type-graphql';
 
 @InputType()
-export class UpdateDayInput {
-  @Field()
-  id: string;
-
+export class UpdateDay {
   @Field({ nullable: true })
   readonly name: string;
 
@@ -13,4 +10,13 @@ export class UpdateDayInput {
 
   @Field(() => Int, { nullable: true })
   readonly order: number;
+}
+
+@InputType()
+export class UpdateDayInput {
+  @Field()
+  id: string;
+
+  @Field()
+  readonly update: UpdateDay;
 }

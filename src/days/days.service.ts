@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { IDay } from './interfaces/day.interface';
 import { CreateDayInput } from './input/create-day.input';
-import { UpdateDayInput } from './input/update-day.input';
+import { UpdateDay } from './input/update-day.input';
 
 @Injectable()
 export class DaysService {
@@ -24,11 +24,8 @@ export class DaysService {
     return this.dayModel.findById(id);
   }
 
-  async updateDay(input: UpdateDayInput) {
-    const {id} = input;
-    delete input.id;
-
-    return this.dayModel.findByIdAndUpdate(id, input, { new: true });
+  async updateDay(id: string, update: UpdateDay) {
+    return this.dayModel.findByIdAndUpdate(id, update, { new: true });
   }
 
   async deleteDay(id: string): Promise<IDay> {

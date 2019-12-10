@@ -27,7 +27,8 @@ export class DaysResolver {
 
   @Mutation(() => DayType)
   async updateDay(@Args('input') input: UpdateDayInput) {
-    return this.daysService.updateDay(input);
+    const {id, update} = input;
+    return this.daysService.updateDay(id, update);
   }
 
   @Mutation(() => DayType)

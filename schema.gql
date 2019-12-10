@@ -33,9 +33,13 @@ type Query {
   readLanguage(id: String!): LanguageType!
 }
 
-input UpdateDayInput {
-  id: String!
+input UpdateDay {
   name: String
   shortName: String
   order: Int
+}
+
+input UpdateDayInput {
+  id: String!
+  update: UpdateDay!
 }
