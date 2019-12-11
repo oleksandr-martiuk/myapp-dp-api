@@ -6,6 +6,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DaysModule } from './days/days.module';
 import { LanguagesModule } from './languages/languages.module';
+import { TimeIntervalsModule } from './time-intervals/time-intervals.module';
+import { OpportunitiesModule } from './opportunities/opportunities.module';
+import { UsersModule } from './users/users.module';
 
 const mongoOptions = {
   useNewUrlParser: true,
@@ -20,6 +23,9 @@ const mongoOptions = {
     MongooseModule.forRoot(MONGO_URI, mongoOptions),
     DaysModule,
     LanguagesModule,
+    TimeIntervalsModule,
+    OpportunitiesModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
