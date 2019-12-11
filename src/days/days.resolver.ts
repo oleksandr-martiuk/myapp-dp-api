@@ -1,8 +1,8 @@
 import { Query, Mutation, Resolver, Args } from '@nestjs/graphql';
 import { DaysService } from './days.service';
 import { DayType } from './dto/day.dto';
-import { CreateDayInput } from './input/create-day.input';
-import { UpdateDayInput } from './input/update-day.input';
+import { DayCreateInput } from './input/create-day.input';
+import { DayUpdateInput } from './input/update-day.input';
 
 @Resolver('Days')
 export class DaysResolver {
@@ -11,7 +11,7 @@ export class DaysResolver {
   ) {}
 
   @Mutation(() => DayType)
-  async createDay(@Args('input') input: CreateDayInput) {
+  async createDay(@Args('input') input: DayCreateInput) {
     return this.daysService.createDay(input);
   }
 
@@ -26,7 +26,7 @@ export class DaysResolver {
   }
 
   @Mutation(() => DayType)
-  async updateDay(@Args('input') input: UpdateDayInput) {
+  async updateDay(@Args('input') input: DayUpdateInput) {
     const {id, update} = input;
     return this.daysService.updateDay(id, update);
   }
