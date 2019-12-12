@@ -1,29 +1,20 @@
 import { Args, Query, Resolver } from '@nestjs/graphql';
 import { LanguagesService } from './languages.service';
 import { LanguageType } from './dto/language.dto';
-import { LanguageUpdate } from './input/update-language.input';
 
 @Resolver('Languages')
 export class LanguagesResolver {
   constructor(
-    private readonly languageService: LanguagesService
+    private readonly languagesService: LanguagesService
   ) {}
 
   @Query(() => [LanguageType])
   async readAllLanguages() {
-    return this.languageService.readAllLanguages();
+    return this.languagesService.readAllLanguages();
   }
 
   @Query(() => LanguageType)
   async readLanguage(@Args('id') id: string) {
-    return this.languageService.readLanguage(id);
-  }
-
-  @Query(() => LanguageType)
-  async updateLanguage(
-    @Args('id') id: string,
-    @Args('input') input: LanguageUpdate
-  ) {
-    return this.languageService.readLanguage(id);
+    return this.languagesService.readLanguage(id);
   }
 }

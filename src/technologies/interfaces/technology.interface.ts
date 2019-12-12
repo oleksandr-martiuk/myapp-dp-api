@@ -1,4 +1,4 @@
-export interface ILanguage {
+export interface ITechnology {
   id: string;
   name: string;
 }

@@ -1,11 +1,20 @@
 import { Field, ID, ObjectType } from 'type-graphql';
 
-@ObjectType()
+@ObjectType({ description: 'The day model' })
 export class DayType {
-  @Field(() => ID)
+  @Field(
+    () => ID, {
+      description: 'ID of the day'
+    })
   readonly id?: string;
-  @Field()
+
+  @Field({
+    description: 'The name of the day'
+  })
   readonly name: string;
-  @Field()
+
+  @Field({
+    description: 'The short name of the day'
+  })
   readonly shortName: string;
 }

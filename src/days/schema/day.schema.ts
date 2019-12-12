@@ -4,4 +4,6 @@ export const DaySchema = new mongoose.Schema({
   name: String,
   shortName: String,
   order: Number
+}, {
+  collection: 'days'
 });

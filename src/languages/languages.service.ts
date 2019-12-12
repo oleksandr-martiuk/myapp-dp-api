@@ -10,7 +10,7 @@ export class LanguagesService {
   ) {}
 
   async readAllLanguages(): Promise<ILanguage[]> {
-    return this.languageModel.find().sort({order: 1});
+    return this.languageModel.find().sort({name: 1});
   }
 
   async readLanguage(id: string): Promise<ILanguage> {

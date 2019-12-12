@@ -3,26 +3,47 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
-input CreateDayInput {
+input DayCreateInput {
   name: String!
   shortName: String!
   order: Int!
 }
 
+"""The day model"""
 type DayType {
+  """ID of the day"""
   id: ID!
+
+  """The name of the day"""
   name: String!
+
+  """The short name of the day"""
   shortName: String!
 }
 
+input DayUpdate {
+  name: String
+  shortName: String
+  order: Int
+}
+
+input DayUpdateInput {
+  id: String!
+  update: DayUpdate!
+}
+
+"""The language model"""
 type LanguageType {
+  """ID of the language"""
   id: ID!
+
+  """The name of the language"""
   name: String!
 }
 
 type Mutation {
-  createDay(input: CreateDayInput!): DayType!
-  updateDay(input: UpdateDayInput!): DayType!
+  createDay(input: DayCreateInput!): DayType!
+  updateDay(input: DayUpdateInput!): DayType!
   deleteDay(id: String!): DayType!
 }
 
@@ -31,15 +52,26 @@ type Query {
   readDay(id: String!): DayType!
   readAllLanguages: [LanguageType!]!
   readLanguage(id: String!): LanguageType!
+  readAllTechnologies: [TechnologyType!]!
+  readTechnology(id: String!): TechnologyType!
+  readAllStudyPrograms: [StudyProgramType!]!
+  readStudyProgram(id: String!): StudyProgramType!
 }
 
-input UpdateDay {
-  name: String
-  shortName: String
-  order: Int
+"""The study program model"""
+type StudyProgramType {
+  """ID of the study program"""
+  id: ID!
+
+  """The name of the study program"""
+  name: String!
 }
 
-input UpdateDayInput {
-  id: String!
-  update: UpdateDay!
+"""The technology model"""
+type TechnologyType {
+  """ID of the technology"""
+  id: ID!
+
+  """The name of the technology"""
+  name: String!
 }

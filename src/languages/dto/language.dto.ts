@@ -1,13 +1,16 @@
 import { Field, ID, ObjectType } from 'type-graphql';
 
-@ObjectType()
+@ObjectType({ description: 'The language model' })
 export class LanguageType {
-  @Field(() => ID)
+  @Field(
+    () => ID,
+    {
+      description: 'ID of the language'
+    })
   readonly id?: string;
 
-  @Field()
+  @Field({
+      description: 'The name of the language'
+    })
   readonly name: string;
-
-  @Field()
-  readonly opportunities: string[];
 }

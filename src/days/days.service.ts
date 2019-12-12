@@ -24,7 +24,7 @@ export class DaysService {
     return this.dayModel.findById(id);
   }
 
-  async updateDay(id: string, update: DayUpdate) {
+  async updateDay(id: string, update: DayUpdate): Promise<IDay> {
     return this.dayModel.findByIdAndUpdate(id, update, { new: true });
   }
 
