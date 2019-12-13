@@ -5,9 +5,12 @@ import { TechnologiesResolver } from './technologies.resolver';
 import { TechnologySchema } from './schema/technology.schema';
 
 @Module({
-  imports: [MongooseModule.forFeature([
-    { name: 'Technology', schema: TechnologySchema }
-  ])],
+  imports: [MongooseModule.forFeature([{
+    name: 'Technology',
+    schema: TechnologySchema,
+    collection: 'technologies'
+  }])],
   providers: [TechnologiesService, TechnologiesResolver]
 })
+
 export class TechnologiesModule {}

@@ -3,12 +3,6 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
-input DayCreateInput {
-  name: String!
-  shortName: String!
-  order: Int!
-}
-
 """The day model"""
 type DayType {
   """ID of the day"""
@@ -21,17 +15,6 @@ type DayType {
   shortName: String!
 }
 
-input DayUpdate {
-  name: String
-  shortName: String
-  order: Int
-}
-
-input DayUpdateInput {
-  id: String!
-  update: DayUpdate!
-}
-
 """The language model"""
 type LanguageType {
   """ID of the language"""
@@ -42,14 +25,16 @@ type LanguageType {
 }
 
 type Mutation {
-  createDay(input: DayCreateInput!): DayType!
-  updateDay(input: DayUpdateInput!): DayType!
-  deleteDay(id: String!): DayType!
+  createUser(input: UserCreateInput!): UserType!
+  updateUser(input: UserUpdateInput!): UserType!
+  deleteUser(id: String!): UserType!
 }
 
 type Query {
   readAllDays: [DayType!]!
   readDay(id: String!): DayType!
+  readAllUsers: [UserType!]!
+  readUser(id: String!): UserType!
   readAllLanguages: [LanguageType!]!
   readLanguage(id: String!): LanguageType!
   readAllTechnologies: [TechnologyType!]!
@@ -67,6 +52,16 @@ type StudyProgramType {
   name: String!
 }
 
+input TeachingTimeInput {
+  from: String
+  to: String
+}
+
+input TeachingTimeUpdateInput {
+  from: String
+  to: String
+}
+
 """The technology model"""
 type TechnologyType {
   """ID of the technology"""
@@ -74,4 +69,110 @@ type TechnologyType {
 
   """The name of the technology"""
   name: String!
+}
+
+input UserContactsInput {
+  country: String!
+  city: String
+}
+
+input UserContactsUpdateInput {
+  country: String!
+  city: String
+}
+
+"""The user contacts"""
+type UserContactType {
+  """The country of the user"""
+  country: String!
+
+  """The city of the user"""
+  city: String!
+}
+
+input UserCreateInput {
+  firstName: String!
+  lastName: String!
+  email: String!
+  contacts: UserContactsInput!
+  description: UserDescriptionInput
+  studyPrograms: [ID!]
+  languages: [ID!]
+  technologies: [ID!]
+  teachingTimes: [TeachingTimeInput!]
+}
+
+input UserDescriptionInput {
+  short: String
+  long: String
+}
+
+"""The user model"""
+type UserDescriptionType {
+  """The short description of user experience"""
+  short: String!
+
+  """The long description of user experience"""
+  long: String!
+}
+
+input UserDescriptionUpdateInput {
+  short: String
+  long: String
+}
+
+"""The user model"""
+type UserTeachingTimeType {
+  """The start time of user for teaching"""
+  from: String!
+
+  """The end time of user for teaching"""
+  to: String!
+}
+
+"""The user model"""
+type UserType {
+  """ID of the user"""
+  id: ID!
+
+  """The first name of the user"""
+  firstName: String!
+
+  """The last name of the user"""
+  lastName: String!
+
+  """The email of the user"""
+  email: String!
+
+  """The contacts of the user"""
+  contacts: UserContactType!
+
+  """The description of the user"""
+  description: UserDescriptionType!
+
+  """The study programs of the user"""
+  studyPrograms: [StudyProgramType!]!
+
+  """The languages of the user"""
+  languages: [LanguageType!]!
+
+  """The technologies of the user"""
+  technologies: [TechnologyType!]!
+
+  """The available teaching times of the user"""
+  teachingTimes: [UserTeachingTimeType!]!
+}
+
+input UserUpdate {
+  contacts: UserContactsUpdateInput
+  description: UserDescriptionUpdateInput
+  studyPrograms: [String!]
+  languages: [String!]
+  technologies: [String!]
+  teachingTimes: [TeachingTimeUpdateInput!]
+}
+
+input UserUpdateInput {
+  id: String!
+  update: UserUpdate!
 }

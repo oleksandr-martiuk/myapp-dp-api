@@ -1,7 +1,8 @@
 import * as mongoose from 'mongoose';
 
 export const StudyProgramSchema = new mongoose.Schema({
-  name: String
-}, {
-  collection: 'study_programs'
+  name: {
+    type: String,
+    required: true
+  }
 });

@@ -5,9 +5,11 @@ import { DaySchema } from './schema/day.schema';
 import { DaysService } from './days.service';
 
 @Module({
-  imports: [MongooseModule.forFeature([
-    { name: 'Day', schema: DaySchema }
-  ])],
+  imports: [MongooseModule.forFeature([{
+    name: 'Day',
+    schema: DaySchema,
+    collection: 'days'
+  }])],
   providers: [DaysResolver, DaysService]
 })
 

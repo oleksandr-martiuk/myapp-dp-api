@@ -1,18 +1,39 @@
 export interface IUser {
   id: string;
   firstName: string;
-  secondName: string;
-  description: {
-    short: string;
-    long: string;
-  },
-  studyPrograms: string[];
-  languages: string[];
-  technologies: string[];
-  teachingTimes: ITeachingTime[];
+  lastName: string;
+  email: string;
+  contacts: IUserContacts;
+  description: IUserDescription;
+  studyPrograms: IStudyPrograms[];
+  languages: ILanguages[];
+  technologies: ITechnologies[];
+  teachingTimes: IUserTeachingTime[];
 }
 
-export interface ITeachingTime {
+interface IUserContacts {
+  country: string;
+  city: string;
+}
+
+interface IUserDescription {
+  short: string;
+  long: string;
+}
+
+interface IUserTeachingTime {
   from: string;
   to: string;
+}
+
+interface IStudyPrograms {
+  name: string;
+}
+
+interface ILanguages {
+  name: string;
+}
+
+interface ITechnologies {
+  name: string;
 }

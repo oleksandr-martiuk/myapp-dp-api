@@ -1,7 +1,8 @@
 import * as mongoose from 'mongoose';
 
 export const LanguageSchema = new mongoose.Schema({
-  name: String
-}, {
-  collection: 'languages'
+  name: {
+    type: String,
+    required: true
+  }
 });
