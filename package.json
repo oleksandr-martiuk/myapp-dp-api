@@ -1,8 +1,7 @@
 {
   "name": "itmentor-api",
   "version": "0.0.1",
-  "description": "Web-project targeted to help people",
-  "author": "Martiuk Oleksandr",
+  "author": "Martiuk Oleksandr <oleksandr.martiuk@gmail.com>",
   "license": "MIT",
   "scripts": {
     "prebuild": "rimraf dist",
